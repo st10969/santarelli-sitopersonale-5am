@@ -56,7 +56,7 @@ const NAVBAR_HTML = `
           </a>
           <a class="dropdown-item-custom" href="pcto.html">
             <img class="dropdown-img" src="pcto navbar.png" alt="pcto" />
-            <span class="dropdown-label">Il mio PCTO</span>
+            <span class="dropdown-label">La mia FSL</span>
           </a>
         </div>
       </li>
