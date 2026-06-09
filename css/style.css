@@ -260,6 +260,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.1rem;
   background: none;
   border: none;
+  /* Sempre in cima: non scende mai sotto il brand */
+  order: 2;
+  flex-shrink: 0;
 }
 
 .hamburger span {
@@ -691,25 +694,40 @@ h1, h2, h3, h4, h5, h6 {
 ------------------------------------------------------- */
 @media (max-width: 991px) {
 
-  /* Navbar: brand e hamburger sulla stessa riga */
-  .navbar-custom {
+  /* ── Navbar wrapper (con o senza .container Bootstrap) ── */
+  .navbar-custom,
+  .navbar-custom > .container,
+  .navbar-custom > .container-fluid,
+  .navbar-custom > .container-sm,
+  .navbar-custom > .container-md,
+  .navbar-custom > .container-lg,
+  .navbar-custom > .container-xl {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    /* padding laterale ridotto per non comprimere il testo */
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  /* Brand leggermente spostato a sinistra */
+  /* Brand: order 1, leggermente spostato a sinistra */
   .navbar-custom .navbar-brand {
+    order: 1;
+    flex-shrink: 0;
     padding-left: 1rem;
   }
 
+  /* Hamburger: order 2, resta a destra nella stessa riga del brand */
   .hamburger {
     display: flex;
+    order: 2;
+    flex-shrink: 0;
   }
 
-  /* Il menu aperto scende su una riga intera sotto brand + hamburger */
+  /* Nav-list: order 3, occupa tutta la riga sotto brand + hamburger */
   .navbar-custom .nav-list {
+    order: 3;
     flex-basis: 100%;
     display: none;
     flex-direction: column;
