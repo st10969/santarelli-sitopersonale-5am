@@ -194,6 +194,17 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%) translateY(0);
 }
 
+/* Dropdown degli ultimi item: si agganciano a destra invece di centrarsi */
+.nav-item-custom:nth-last-child(-n+3) .dropdown-custom {
+  left: auto;
+  right: 0;
+  transform: translateX(0) translateY(-6px);
+}
+
+.nav-item-custom:nth-last-child(-n+3):hover .dropdown-custom {
+  transform: translateX(0) translateY(0);
+}
+
 .dropdown-item-custom {
   display: flex;
   flex-direction: column;
@@ -737,6 +748,25 @@ h1, h2, h3, h4, h5, h6 {
 
   .nav-item-custom.open > .dropdown-custom {
     display: flex;
+  }
+
+  /* Annulla lo spostamento della foto hero su mobile */
+  .hero-photo {
+    transform: none !important;
+  }
+
+  /* Colore testo sottovoci navbar leggibile su sfondo scuro */
+  .dropdown-item-custom {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .dropdown-item-custom .dropdown-label {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .dropdown-item-custom:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
   }
 
   .dropdown-item-custom .dropdown-img {
