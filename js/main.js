@@ -48,7 +48,7 @@ const NAVBAR_HTML = `
         <a class="nav-link-custom" href="educazione-civica.html">Educazione Civica</a>
       </li>
       <li class="nav-item-custom">
-        <a class="nav-link-custom has-dropdown" href="#">FLS<span class="arrow">&#9660;</span></a>
+        <a class="nav-link-custom has-dropdown" href="#">FSL<span class="arrow">&#9660;</span></a>
         <div class="dropdown-custom">
           <a class="dropdown-item-custom" href="loccioni.html">
             <img class="dropdown-img" src="logo loccioni.png" alt="L'impresa Loccioni" />
