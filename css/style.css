@@ -690,11 +690,27 @@ h1, h2, h3, h4, h5, h6 {
    10. RESPONSIVE
 ------------------------------------------------------- */
 @media (max-width: 991px) {
+
+  /* Navbar: brand e hamburger sulla stessa riga */
+  .navbar-custom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Brand leggermente spostato a sinistra */
+  .navbar-custom .navbar-brand {
+    padding-left: 1rem;
+  }
+
   .hamburger {
     display: flex;
   }
 
+  /* Il menu aperto scende su una riga intera sotto brand + hamburger */
   .navbar-custom .nav-list {
+    flex-basis: 100%;
     display: none;
     flex-direction: column;
     width: 100%;
