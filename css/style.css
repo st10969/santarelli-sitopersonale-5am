@@ -93,6 +93,19 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-md);
 }
 
+/*
+  Layout interno: il div.container-fluid è il vero flex-container
+  che contiene brand + hamburger + nav-list.
+  Lo definiamo qui nel CSS base così funziona sempre,
+  con o senza Bootstrap.
+*/
+.navbar-custom > .container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .navbar-custom .navbar-brand {
   font-family: var(--font-display);
   font-weight: 800;
@@ -102,6 +115,9 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   padding: 1.1rem 1.5rem;
   transition: color var(--transition);
+  /* Sempre sul primo posto nella riga */
+  order: 1;
+  flex-shrink: 0;
 }
 
 .navbar-custom .navbar-brand span {
@@ -119,6 +135,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   height: 100%;
+  /* Sul desktop occupa il posto a destra del brand */
+  order: 3;
 }
 
 .navbar-custom .nav-item-custom {
@@ -250,6 +268,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* -------------------------------------------------------
    3b. HAMBURGER
+   Nascosto di default, visibile solo sotto i 992px
 ------------------------------------------------------- */
 .hamburger {
   display: none;
@@ -260,8 +279,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.1rem;
   background: none;
   border: none;
-  /* Sempre in cima: non scende mai sotto il brand */
-  order: 2;
+  order: 2;       /* Sempre tra brand (1) e nav-list (3) */
   flex-shrink: 0;
 }
 
@@ -694,43 +712,18 @@ h1, h2, h3, h4, h5, h6 {
 ------------------------------------------------------- */
 @media (max-width: 991px) {
 
-  /* ── Navbar wrapper (con o senza .container Bootstrap) ── */
-  .navbar-custom,
-  .navbar-custom > .container,
-  .navbar-custom > .container-fluid,
-  .navbar-custom > .container-sm,
-  .navbar-custom > .container-md,
-  .navbar-custom > .container-lg,
-  .navbar-custom > .container-xl {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    /* padding laterale ridotto per non comprimere il testo */
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Brand: order 1, leggermente spostato a sinistra */
-  .navbar-custom .navbar-brand {
-    order: 1;
-    flex-shrink: 0;
-    padding-left: 1rem;
-  }
-
-  /* Hamburger: order 2, resta a destra nella stessa riga del brand */
+  /* Mostra l'hamburger: si posiziona a destra del brand
+     grazie a order:2 già dichiarato nella sezione 3b */
   .hamburger {
     display: flex;
-    order: 2;
-    flex-shrink: 0;
   }
 
-  /* Nav-list: order 3, occupa tutta la riga sotto brand + hamburger */
+  /* La nav-list diventa la terza riga sotto brand+hamburger:
+     occupa tutta la larghezza disponibile */
   .navbar-custom .nav-list {
-    order: 3;
-    flex-basis: 100%;
     display: none;
     flex-direction: column;
+    flex-basis: 100%;
     width: 100%;
     background-color: var(--navy-dark);
     padding: 1rem 0;
@@ -789,7 +782,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: none !important;
   }
 
-  /* Sottovoci navbar: centrate con margin auto, testo bianco */
+  /* Sottovoci dropdown: centrate, testo bianco */
   .dropdown-item-custom {
     color: rgba(255, 255, 255, 0.85) !important;
     display: flex;
