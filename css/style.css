@@ -736,10 +736,11 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 0;
     border-top: none;
     border-left: 2px solid var(--gold);
-    padding: 0.5rem 1rem 0.75rem 1.5rem;
+    padding: 0.75rem 1rem;
     flex-direction: column;
     flex-wrap: nowrap;
-    gap: 0.25rem;
+    align-items: center;
+    gap: 0.5rem;
     display: none;
     background-color: rgba(0,0,0,0.15);
     margin-left: 1.5rem;
@@ -755,18 +756,25 @@ h1, h2, h3, h4, h5, h6 {
     transform: none !important;
   }
 
-  /* Colore testo sottovoci navbar leggibile su sfondo scuro */
+  /* Sottovoci navbar: centrate, testo bianco, stile uniforme */
   .dropdown-item-custom {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.85) !important;
+    align-items: center;
+    width: auto;
+    min-width: 120px;
   }
 
   .dropdown-item-custom .dropdown-label {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.85) !important;
   }
 
   .dropdown-item-custom:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
+    color: var(--white) !important;
+  }
+
+  .dropdown-item-custom:hover .dropdown-label {
+    color: var(--white) !important;
   }
 
   .dropdown-item-custom .dropdown-img {
